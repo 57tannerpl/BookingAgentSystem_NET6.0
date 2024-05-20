@@ -94,6 +94,13 @@ This API allows users to create and retrieve bookings:
   "errors": null
 }
 ```
+- **OK Response:**
+ ```json
+{
+  "HttpStatusCode": 409,
+  "error": "Maximum reservation number 4 at the same time reached"
+}
+```
 - **Conflict Response:**
  ```json
 {
