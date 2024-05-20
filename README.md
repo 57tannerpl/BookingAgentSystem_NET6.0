@@ -81,8 +81,8 @@ This API allows users to create and retrieve bookings:
   "createdAt": "2024-05-20T01:23:52.629Z"
   }
 ```
-  
-- **Response:** 
+
+- **Response:**
 - **OK Status:**
  ```json
 {
