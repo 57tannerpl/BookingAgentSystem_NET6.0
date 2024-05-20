@@ -30,7 +30,7 @@ namespace SettlementBookingAgent_NET6._0.API.Controllers{
             
             if (!bookings.Any())
             {
-                return Ok(new ApiReturnObject<object>(null, StatusCodes.Status200OK, true, "No bookings available at the moment."));
+                return Ok(new ApiReturnObject<object>(null, StatusCodes.Status200OK, true, "No booking yet."));
 
             }
             _logger.LogInformation($"{DateTime.UtcNow.ToString("hh:mm:ss")}: Retrieved all {bookings.Count()} bookings");
