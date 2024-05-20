@@ -110,7 +110,7 @@ This API allows users to create and retrieve bookings:
 ```
 
 ### Running the Project:
-1.Clone the repository.
-2.Open the solution in Visual Studio or your preferred IDE.
-3.Build the project to restore the dependencies.
-4.Run the project. The API will be available at https://localhost:7249/api/Booking.
+- **1.Clone the repository.**
+- **2.Open the solution in Visual Studio or your preferred IDE.**
+- **3.Build the project to restore the dependencies.**
+- **4.Run the project. The API will be available at https://localhost:7249/api/Booking**
