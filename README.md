@@ -101,6 +101,7 @@ This API allows users to create and retrieve bookings:
   "HttpStatusCode": 409,
   "error": "Maximum reservation number 4 at the same time reached"
 }
+```
 - **Bad Request Response:**
  ```json
 {
@@ -109,7 +110,7 @@ This API allows users to create and retrieve bookings:
 }
 ```
 
-- **Running the Project:**
+### Running the Project:
 1.Clone the repository.
 2.Open the solution in Visual Studio or your preferred IDE.
 3.Build the project to restore the dependencies.
