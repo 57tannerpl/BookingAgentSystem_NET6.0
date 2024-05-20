@@ -73,16 +73,16 @@ This API allows users to create and retrieve bookings:
 - **Request Body:**
   ```json
   {
-  "bookingTime": "HH:mm",
-  "organizer": "string",
-  "attendee": "string",
-  "purchaseType": "string",
-  "clientName": "string",
-  "createdAt": "2024-05-20T01:23:52.629Z"
+    "bookingTime": "HH:mm",
+    "organizer": "string",
+    "attendee": "string",
+    "purchaseType": "string",
+    "clientName": "string",
+    "createdAt": "2024-05-20T01:23:52.629Z"
   }
-```
+  ```
 
-- **OK Response:**
+ - **ok Response:**
  ```json
 {
   "status": 200,
