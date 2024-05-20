@@ -82,9 +82,9 @@ This API allows users to create and retrieve bookings:
   }
 
   
-Response:
-------OK Status:
-json
+- **Response:** 
+- **OK Status:**
+ ```json
 {
   "status": 200,
   "success": true,
@@ -94,23 +94,20 @@ json
   },
   "errors": null
 }
-
-----Conflict Response:
-json
-Copy code
+- **Conflict Response:**
+ ```json
 {
   "HttpStatusCode": 409,
   "error": "Maximum reservation number 4 at the same time reached"
 }
-
------Bad Request Response:
-json
+- **Bad Request Response:**
+ ```json
 {
   "HttpStatusCode": 400,
   "error": "Booking time must be between 9:00 and 16:00."
 }
 
-Running the Project:
+- **Running the Project:**
 1.Clone the repository.
 2.Open the solution in Visual Studio or your preferred IDE.
 3.Build the project to restore the dependencies.
