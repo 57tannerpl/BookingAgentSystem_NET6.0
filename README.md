@@ -97,8 +97,13 @@ This API allows users to create and retrieve bookings:
 - **OK Response:**
  ```json
 {
-  "HttpStatusCode": 409,
-  "error": "Maximum reservation number 4 at the same time reached"
+  "status": 200,
+  "success": true,
+  "message": "Booking successfully.",
+  "data": {
+    "bookingId": "46ab68e5-9df3-4d71-b7b8-527641d1afb7"
+  },
+  "errors": null
 }
 ```
 - **Conflict Response:**
