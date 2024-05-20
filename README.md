@@ -94,18 +94,6 @@ This API allows users to create and retrieve bookings:
   "errors": null
 }
 ```
-- **OK Response:**
- ```json
-{
-  "status": 200,
-  "success": true,
-  "message": "Booking successfully.",
-  "data": {
-    "bookingId": "46ab68e5-9df3-4d71-b7b8-527641d1afb7"
-  },
-  "errors": null
-}
-```
 - **Conflict Response:**
  ```json
 {
