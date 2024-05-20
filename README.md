@@ -21,46 +21,6 @@ This API allows users to create and retrieve bookings:
 
 ![image](https://github.com/57tannerpl/BookingAgentSystem_NET6.0/assets/170209495/469f8a83-1475-47a4-94b3-a2a1a7125bef)
 
-SettlementBookingAgent_NET6.0.API
-│ appsettings.json
-| Extensions.cs
-│ Program.cs
-│ appsettings.json
-│
-├───Controllers
-│ BookingController.cs
-│
-├───DTOs
-│ BookingDto.cs
-│
-├───Interfaces
-│ IBookingRepository.cs
-│
-├───Models
-│ Booking.cs
-│ ApiReturnObject.cs
-|----ValidationAttributes
-|       |ValidBookingTimeFormatAttribute.cs
-│
-├───Repositories
-│ BookingRepository.cs
-│ BookingRepositoryProxy.cs
-|----Settings
-|       |SBAApiSettings.cs
-│
-├───Responses
-│ ApiResponse.cs
-│
-├───Middlewares
-│ CustomExceptionHandler.cs
-│
-└───Data
-|SBADbContext.cs
-│
-└───Configs
-|SettlementBookingAgentAPI_Settings.xml
- 
-
 ## Endpoints
 
 ### Get All Bookings
