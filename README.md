@@ -80,7 +80,7 @@ This API allows users to create and retrieve bookings:
   "clientName": "string",
   "createdAt": "2024-05-20T01:23:52.629Z"
   }
-
+```
   
 - **Response:** 
 - **OK Status:**
@@ -94,6 +94,7 @@ This API allows users to create and retrieve bookings:
   },
   "errors": null
 }
+```
 - **Conflict Response:**
  ```json
 {
@@ -106,6 +107,7 @@ This API allows users to create and retrieve bookings:
   "HttpStatusCode": 400,
   "error": "Booking time must be between 9:00 and 16:00."
 }
+```
 
 - **Running the Project:**
 1.Clone the repository.
