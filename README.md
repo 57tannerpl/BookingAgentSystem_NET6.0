@@ -82,7 +82,6 @@ This API allows users to create and retrieve bookings:
   }
 ```
 
-- **Response:**
 - **OK Response:**
  ```json
 {
