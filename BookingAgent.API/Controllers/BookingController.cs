@@ -26,8 +26,12 @@ namespace SettlementBookingAgent_NET6._0.API.Controllers{
         public async Task<ActionResult> GetBookingsASync()
         {
             // Return List<BookingDTO> for response
-            var bookings = (await _bookingRepository.GetBookingsAsync());
-            
+            /*
+            only return the List of bookingId
+            var bookings = (await _bookingRepository.GetBookingsAsync())
+                .Select(booking =>booking.BookingId);
+            */
+            var bookings = (await _bookingRepository.GetBookingsAsync();
             if (!bookings.Any())
             {
                 return Ok(new ApiReturnObject<object>(null, StatusCodes.Status200OK, true, "No booking yet."));
