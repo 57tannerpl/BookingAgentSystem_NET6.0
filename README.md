@@ -97,15 +97,25 @@ This API allows users to create and retrieve bookings:
 - **Conflict Response:**
  ```json
 {
-  "HttpStatusCode": 409,
-  "error": "Maximum reservation number 4 at the same time reached"
+  "Status": 409,
+  "Success": false,
+  "Message": "Conflict error",
+  "Data": null,
+  "Errors": [
+    "Maximum reservation number 4 at the same time reached"
+  ]
 }
 ```
 - **Bad Request Response:**
  ```json
 {
-  "HttpStatusCode": 400,
-  "error": "Booking time must be between 9:00 and 16:00."
+  "Status": 400,
+  "Success": false,
+  "Message": "Bad request error",
+  "Data": null,
+  "Errors": [
+    "Booking time must be between 9:00 and 16:00."
+  ]
 }
 ```
 
