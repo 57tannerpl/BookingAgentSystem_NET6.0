@@ -5,9 +5,9 @@ namespace SettlementBookingAgent_NET6._0.API.Interfaces
 {
     public interface IBookingRepository
     {
-        Task AddBookingAsync(Booking booking);
+        Task<Booking> AddBookingAsync(BookingDto bookingDto);
         Task<IEnumerable<Booking>> GetBookingsAsync();
-        Task<bool> ValidateBasicBookingAsync(Booking booking);
+        Task<bool> ValidateBasicBookingAsync(BookingDto bookingDto);
         Task<List<Booking>> GetBookingsByTimeAsync(DateTime bookingTime);
         // Add other methods as needed
     }
