@@ -59,6 +59,7 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
                 throw new ArgumentException("Maximum reservation number " + MaxReservation + " at the same time reached");
             }
 
+
             // Additional validation rules as needed
             return true;
         }
