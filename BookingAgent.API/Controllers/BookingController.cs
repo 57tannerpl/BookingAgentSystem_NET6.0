@@ -44,6 +44,11 @@ namespace SettlementBookingAgent_NET6._0.API.Controllers{
         [ActionName("AddBookingAsync")]
         public async Task<ActionResult> AddBookingAsync(BookingDto bookingDto)
         {
+            if (!Enum.TryParse<PurchaseType>(bookingDto.PurchaseType, true, out var purchaseType))
+            {
+                return BadRequest("Invalid PurchaseType. Must be either 'buy' or 'sell'.");
+            }
+            //var purchasetype = bookingDto.b
             var newBooking = new Booking
             {
                 BookingId = Guid.NewGuid(), // Assigning a new Guid for the booking id
@@ -51,9 +56,10 @@ namespace SettlementBookingAgent_NET6._0.API.Controllers{
                 BookingTime = bookingDto.BookingTime,
                 Organizer = bookingDto.Organizer,
                 Attendee = bookingDto.Attendee,
-                PurchaseType = bookingDto.PurchaseType,
+                PurchaseType = purchaseType,//PurchaseType = bookingDto.PurchaseType,
             };
             await _bookingRepository.AddBookingAsync(newBooking);
+            Console.WriteLine(newBooking);
             _logger.LogInformation("Adding booking: {@Booking}", newBooking);
             return CreatedAtAction(nameof(AddBookingAsync),
                                    new { newBooking.BookingId },

@@ -16,7 +16,7 @@ namespace SettlementBookingAgent_NET6._0.API
                 BookingTime = item.BookingTime,
                 Organizer = item.Organizer,
                 Attendee = item.Attendee,
-                PurchaseType = item.PurchaseType,
+                //PurchaseType = item.PurchaseType,
                 CreatedAt = item.CreatedAt,
             };
         }
