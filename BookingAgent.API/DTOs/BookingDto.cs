@@ -6,7 +6,7 @@ namespace SettlementBookingAgent_NET6._0.API.DTOs
     public class BookingDto
     {
         [Required(ErrorMessage = "BookingTime is required.")]
-        [RegularExpression(@"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", ErrorMessage = "Invalid booking time format.")]
+        [RegularExpression(@"^(0[9]|1[0-6]):(00|30)$", ErrorMessage = "Invalid booking time format or value. The booking time format should be 'HH:MM' like '09:30' and in full half-hour format (e.g., 9:00, 9:30, 10:00, etc.).")]
         public string BookingTime { get; set; }
 
         [Required(ErrorMessage = "Organizer is required.")]
