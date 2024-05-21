@@ -31,7 +31,7 @@ namespace SettlementBookingAgent_NET6._0.API.Controllers{
             var bookings = (await _bookingRepository.GetBookingsAsync())
                 .Select(booking =>booking.BookingId);
             */
-            var bookings = (await _bookingRepository.GetBookingsAsync();
+            var bookings = await _bookingRepository.GetBookingsAsync();
             if (!bookings.Any())
             {
                 return Ok(new ApiReturnObject<object>(null, StatusCodes.Status200OK, true, "No booking yet."));
