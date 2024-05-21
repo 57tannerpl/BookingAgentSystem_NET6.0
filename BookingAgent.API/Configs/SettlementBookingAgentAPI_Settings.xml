@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" standalone="yes"?>
-<SBAApiSettings>
-	<MaximumReservation>4</MaximumReservation>
-	<BookingStartTime>9</BookingStartTime>
-	<BookingEndTime>16</BookingEndTime>
-	<BookingDueration>1</BookingDueration>
-</SBAApiSettings>

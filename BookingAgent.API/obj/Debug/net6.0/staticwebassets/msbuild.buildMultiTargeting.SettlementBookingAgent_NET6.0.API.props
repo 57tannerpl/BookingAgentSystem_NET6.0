@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\SettlementBookingAgent_NET6.0.API.props" />
-</Project>
