@@ -44,24 +44,12 @@ namespace SettlementBookingAgent_NET6._0.API.Controllers{
         [ActionName("AddBookingAsync")]
         public async Task<ActionResult> AddBookingAsync(BookingDto bookingDto)
         {
-            //var purchasetype = bookingDto.b
-            /*
-            var newBooking = new Booking
-            {
-                BookingId = Guid.NewGuid(), // Assigning a new Guid for the booking id
-                ClientName = bookingDto.ClientName,
-                BookingTime = bookingDto.BookingTime,
-                Organizer = bookingDto.Organizer,
-                Attendee = bookingDto.Attendee,
-                PurchaseType = purchaseType,//PurchaseType = bookingDto.PurchaseType,
-            };*/
             Booking newBooking = await _bookingRepository.AddBookingAsync(bookingDto);
             _logger.LogInformation("Adding booking: {@Booking}", newBooking);
             return CreatedAtAction(nameof(AddBookingAsync),
                                    new { newBooking.BookingId },
-                                   new ApiReturnObject<object>(new { newBooking.BookingId }, StatusCodes.Status200OK, true, "Booking successfully."));
+                                   new ApiReturnObject<object>(new { newBooking.BookingId }, StatusCodes.Status200OK, true, "Booking successed."));
 
         }
-        // Other action methods
     }
 }

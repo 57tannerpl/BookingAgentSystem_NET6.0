@@ -17,6 +17,7 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
         {
             if (await ValidateBasicBookingAsync(bookingDto))
             {
+                //validate the purchasetype
                 if (!Enum.TryParse<PurchaseType>(bookingDto.PurchaseType, true, out var purchaseType))
                 {
                     throw new ArgumentException("Invalid PurchaseType. Must be either 'buy' or 'sell'.");
@@ -32,8 +33,7 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
                 };
                 _context.Bookings.Add(newBooking);
                 _context.SaveChanges();
-                return newBooking;
-                await Task.CompletedTask;
+                return await Task.FromResult(newBooking);
             }
             else
             {
@@ -72,13 +72,8 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
             {
                 throw new ArgumentException("Booking time must be after now");
 
-            }
-
-            //validate the purchasetype
-            if (!Enum.TryParse<PurchaseType>(bookingDto.PurchaseType, true, out var purchaseType))
-            {
-                throw new ArgumentException("Invalid PurchaseType. Must be either 'buy' or 'sell'.");
-            }
+            }           
+            
 
             // Validate that the booking time is between 9:00 and 16:00            
             if (DateTime.Parse(bookingDto.BookingTime).TimeOfDay < startHour || DateTime.Parse(bookingDto.BookingTime).TimeOfDay >= endHour)
