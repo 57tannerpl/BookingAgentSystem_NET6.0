@@ -118,6 +118,20 @@ This API allows users to create and retrieve bookings:
   ]
 }
 ```
+- **Bad Request Response:**
+ ```json
+{
+  "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "traceId": "00-1b52c04de74baa4db950c9d24bdbeca6-728eb78152aed60c-00",
+  "errors": {
+    "BookingTime": [
+      "Invalid booking time format or value. The booking time format should be 'HH:MM' like '09:30' and in full half-hour format (e.g., 9:00, 9:30, 10:00, etc.)."
+    ]
+  }
+}
+```
 
 ### Running the Project:
 - **1.Clone the repository.**
