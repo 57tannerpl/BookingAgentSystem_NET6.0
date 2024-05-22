@@ -15,14 +15,14 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
             _logger = logger;
         }
 
-        public async Task AddBookingAsync(Booking booking)
+        public async Task<Booking> AddBookingAsync(BookingDto bookingDto)
         {
             // Additional logic before delegating to the real service
             // For example: Logging, validation, etc.
-            if (await ValidateBookingInfoAsync(booking))
+            if (await ValidateBookingInfoAsync(bookingDto))
             {
-                await _bookingRepository.AddBookingAsync(booking); // Delegate to the real service
-                await SendingInvitationToAttendeesAsync(booking);
+                Booking booking= await _bookingRepository.AddBookingAsync(bookingDto); // Delegate to the real service
+                return booking;
             } else
             {
                 throw new ArgumentException("AddBooking");
@@ -34,17 +34,17 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
         {
             return await _bookingRepository.GetBookingsAsync();
         }
-        public async Task<bool> ValidateBasicBookingAsync(Booking booking)
+        public async Task<bool> ValidateBasicBookingAsync(BookingDto bookingDto)
         {
-            return await _bookingRepository.ValidateBasicBookingAsync(booking);
+            return await _bookingRepository.ValidateBasicBookingAsync(bookingDto);
         }
         public async Task<List<Booking>> GetBookingsByTimeAsync(DateTime bookingTime)
         {
             return await _bookingRepository.GetBookingsByTimeAsync(bookingTime);
         }
-        private async Task<bool> ValidateBookingInfoAsync(Booking booking)
+        private async Task<bool> ValidateBookingInfoAsync(BookingDto bookingDto)
         {
-            bool isBasicValid = await ValidateBasicBookingAsync(booking);
+            bool isBasicValid = await ValidateBasicBookingAsync(bookingDto);
             if (!isBasicValid)
             {
                 throw new ArgumentException("ValidateBasicBooking fail");
@@ -53,7 +53,7 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
             // Check if booking time slot is available
             var ApiSetting = Extensions.XMLReadingSettings();
             int MaxReservation = ApiSetting.MaximumReservation;            
-            var existingBookings = await GetBookingsByTimeAsync(DateTime.Parse(booking.BookingTime));
+            var existingBookings = await GetBookingsByTimeAsync(DateTime.Parse(bookingDto.BookingTime));
             if (existingBookings.Count >= MaxReservation)
             {
                 throw new ArgumentException("Maximum reservation number " + MaxReservation + " at the same time reached");

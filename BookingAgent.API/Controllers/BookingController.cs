@@ -26,8 +26,12 @@ namespace SettlementBookingAgent_NET6._0.API.Controllers{
         public async Task<ActionResult> GetBookingsASync()
         {
             // Return List<BookingDTO> for response
-            var bookings = (await _bookingRepository.GetBookingsAsync());
-            
+            /*
+            only return the List of bookingId
+            var bookings = (await _bookingRepository.GetBookingsAsync())
+                .Select(booking =>booking.BookingId);
+            */
+            var bookings = await _bookingRepository.GetBookingsAsync();
             if (!bookings.Any())
             {
                 return Ok(new ApiReturnObject<object>(null, StatusCodes.Status200OK, true, "No booking yet."));
@@ -44,22 +48,12 @@ namespace SettlementBookingAgent_NET6._0.API.Controllers{
         [ActionName("AddBookingAsync")]
         public async Task<ActionResult> AddBookingAsync(BookingDto bookingDto)
         {
-            var newBooking = new Booking
-            {
-                BookingId = Guid.NewGuid(), // Assigning a new Guid for the booking id
-                ClientName = bookingDto.ClientName,
-                BookingTime = bookingDto.BookingTime,
-                Organizer = bookingDto.Organizer,
-                Attendee = bookingDto.Attendee,
-                PurchaseType = bookingDto.PurchaseType,
-            };
-            await _bookingRepository.AddBookingAsync(newBooking);
+            Booking newBooking = await _bookingRepository.AddBookingAsync(bookingDto);
             _logger.LogInformation("Adding booking: {@Booking}", newBooking);
             return CreatedAtAction(nameof(AddBookingAsync),
                                    new { newBooking.BookingId },
-                                   new ApiReturnObject<object>(new { newBooking.BookingId }, StatusCodes.Status200OK, true, "Booking successfully."));
+                                   new ApiReturnObject<object>(new { newBooking.BookingId }, StatusCodes.Status201Created, true, "Booking successed."));
 
         }
-        // Other action methods
     }
 }

@@ -8,20 +8,23 @@ namespace SettlementBookingAgent_NET6._0.API
 {
     public static class Extensions
     {
-        public static BookingDto AsDto(this Booking item)
+        /*
+        public static BookingDto AsDto(this Booking item, Func<string, string> getOrganizerName)
         {
+            var organizerName = getOrganizerName(item.OrganizerId);
+            var attendeeName = getOrganizerName(item.AttendeeId);
             return new BookingDto()
             {
                 ClientName = item.ClientName,
                 BookingTime = item.BookingTime,
-                Organizer = item.Organizer,
-                Attendee = item.Attendee,
-                PurchaseType = item.PurchaseType,
+                Organizer= organizerName,
+                Attendee = attendeeName,
+                //PurchaseType = item.PurchaseType,
                 CreatedAt = item.CreatedAt,
             };
         }
 
-
+        */
         public static SBAApiSettings XMLReadingSettings()
         {
             var file = Directory.GetCurrentDirectory() + "\\Configs\\SettlementBookingAgentAPI_Settings.xml";
