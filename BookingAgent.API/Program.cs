@@ -20,9 +20,6 @@ builder.Services.Decorate<IBookingRepository, BookingServiceProxy>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
-
-    // Register the schema filter
     c.SchemaFilter<NameFormattingSchemaFilter>();
 });
 builder.Services.AddLogging();
@@ -33,8 +30,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseMiddleware<CustomExceptionHandler>();
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    
 }
 
 app.UseHttpsRedirection();
