@@ -91,6 +91,7 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
                 BookingTime = bookingDto.BookingTime,
                 OrganizerId = organizerId,
                 AttendeeId = attendeeId,
+                CreatedAt = bookingDto.CreatedAt,
                 PurchaseType = purchaseType,//PurchaseType = bookingDto.PurchaseType,
             };
         }
