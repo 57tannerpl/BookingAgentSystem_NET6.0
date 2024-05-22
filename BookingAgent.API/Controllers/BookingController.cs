@@ -52,7 +52,7 @@ namespace SettlementBookingAgent_NET6._0.API.Controllers{
             _logger.LogInformation("Adding booking: {@Booking}", newBooking);
             return CreatedAtAction(nameof(AddBookingAsync),
                                    new { newBooking.BookingId },
-                                   new ApiReturnObject<object>(new { newBooking.BookingId }, StatusCodes.Status200OK, true, "Booking successed."));
+                                   new ApiReturnObject<object>(new { newBooking.BookingId }, StatusCodes.Status201Created, true, "Booking successed."));
 
         }
     }
