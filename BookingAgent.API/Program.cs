@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using SettlementBookingAgent_NET6._0.API;
 using SettlementBookingAgent_NET6._0.API.Data;
+using SettlementBookingAgent_NET6._0.API.Filters;
 using SettlementBookingAgent_NET6._0.API.Interfaces;
 using SettlementBookingAgent_NET6._0.API.Middlewares;
 using SettlementBookingAgent_NET6._0.API.Repositories;
@@ -16,7 +18,13 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.Decorate<IBookingRepository, BookingServiceProxy>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
+
+    // Register the schema filter
+    c.SchemaFilter<NameFormattingSchemaFilter>();
+});
 builder.Services.AddLogging();
 
 var app = builder.Build();

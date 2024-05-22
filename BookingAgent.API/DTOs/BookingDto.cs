@@ -15,15 +15,18 @@ namespace SettlementBookingAgent_NET6._0.API.DTOs
         public string PurchaseType { get; set; } //buy or sell ?
 
         [Required(ErrorMessage = "buyer/seller's Name is required.")]
-        [MinLength(1, ErrorMessage = "buyer/seller's Name cannot be empty.")]
+        [RegularExpression(@"^[A-Z][a-z]*(\s[A-Z][a-z]*)*$", ErrorMessage = "buyer/seller's name must be in the format 'First Last'.")]
         public string ClientName { get; set; } //buyer/seller's Name
-        public DateTime CreatedAt { get; set; } // Timestamp of when the booking was created
 
         [Required(ErrorMessage = "Organizer is required.")]
+        [RegularExpression(@"^[A-Z][a-z]*(\s[A-Z][a-z]*)*$", ErrorMessage = "Organizer name must be in the format 'First Last'.")]
         public string Organizer { get; set; } //who makes this booking ?   
 
         [Required(ErrorMessage = "Attendee is required.")]
+        [RegularExpression(@"^[A-Z][a-z]*(\s[A-Z][a-z]*)*$", ErrorMessage = "Attendee name must be in the format 'First Last'.")]
         public string Attendee { get; set; } //who attends this booking ? 
+
+        public DateTime CreatedAt { get; set; } // Timestamp of when the booking was created
         // Additional properties can be added as needed
     }
 }

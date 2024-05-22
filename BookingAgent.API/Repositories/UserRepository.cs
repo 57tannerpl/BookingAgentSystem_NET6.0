@@ -29,8 +29,8 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
         {
             _users = new List<User>
             {
-            new User { Id = 1, Name = "JohnDoe", Email = "john@example.com", UserRole = Role.Solicitor },
-            new User { Id = 2, Name = "JaneSmith", Email = "jane@example.com", UserRole = Role.Solicitor  }
+            new User { Id = 1, Name = "John Doe", Email = "john@example.com", UserRole = Role.Solicitor },
+            new User { Id = 2, Name = "Jane Smith", Email = "jane@example.com", UserRole = Role.Solicitor  }
              };
         }
 
