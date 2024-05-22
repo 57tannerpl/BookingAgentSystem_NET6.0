@@ -6,13 +6,11 @@
         public string Name { get; set; }
         public string Email { get; set; }
         public Role UserRole { get; set; } // Reference to the user's role
-
-        public User(int id, string name, string email, Role userRole)
+        public enum Role
         {
-            Id = id;
-            Name = name;
-            Email = email;
-            UserRole = userRole;
+            Solicitor,
+            Broker,
+            Client
         }
     }
 }

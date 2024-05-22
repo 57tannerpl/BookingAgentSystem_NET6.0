@@ -9,28 +9,18 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
     {
 
         private readonly SBADbContext _context;
-        public BookingRepository(SBADbContext context)
+        private readonly IUserRepository _userRepository;
+        public BookingRepository(SBADbContext context, IUserRepository userRepository)
         {
             _context = context;
+            _userRepository = userRepository;
         }
         public async Task<Booking> AddBookingAsync(BookingDto bookingDto)
         {
             if (await ValidateBasicBookingAsync(bookingDto))
             {
-                //validate the purchasetype
-                if (!Enum.TryParse<PurchaseType>(bookingDto.PurchaseType, true, out var purchaseType))
-                {
-                    throw new ArgumentException("Invalid PurchaseType. Must be either 'buy' or 'sell'.");
-                }
-                var newBooking = new Booking
-                {
-                    BookingId = Guid.NewGuid(), // Assigning a new Guid for the booking id
-                    ClientName = bookingDto.ClientName,
-                    BookingTime = bookingDto.BookingTime,
-                    Organizer = bookingDto.Organizer,
-                    Attendee = bookingDto.Attendee,
-                    PurchaseType = purchaseType,//PurchaseType = bookingDto.PurchaseType,
-                };
+                
+                var newBooking = await CreateNewBooking(bookingDto);
                 _context.Bookings.Add(newBooking);
                 _context.SaveChanges();
                 return await Task.FromResult(newBooking);
@@ -84,6 +74,26 @@ namespace SettlementBookingAgent_NET6._0.API.Repositories
             return await Task.FromResult(true);
         }
 
+        private async Task<Booking> CreateNewBooking(BookingDto bookingDto)
+        {
+            //validate the purchasetype
+            if (!Enum.TryParse<PurchaseType>(bookingDto.PurchaseType, true, out var purchaseType))
+            {
+                throw new ArgumentException("Invalid PurchaseType. Must be either 'buy' or 'sell'.");
+            }
+
+            var organizerId = await _userRepository.GetUserIdByNameAsync(bookingDto.Organizer, "Organizer");
+            var attendeeId = await _userRepository.GetUserIdByNameAsync(bookingDto.Attendee, "Attendee");
+            return new Booking
+            {
+                BookingId = Guid.NewGuid(), // Assigning a new Guid for the booking id
+                ClientName = bookingDto.ClientName,
+                BookingTime = bookingDto.BookingTime,
+                OrganizerId = organizerId,
+                AttendeeId = attendeeId,
+                PurchaseType = purchaseType,//PurchaseType = bookingDto.PurchaseType,
+            };
+        }
     }
 }
 

@@ -21,9 +21,9 @@ namespace SettlementBookingAgent_NET6._0.API.Models
         public DateTime CreatedAt { get; set; } // Timestamp of when the booking was created
 
         [Required(ErrorMessage = "Organizer is required.")]
-        public string Organizer { get; set; } //who makes this booking ?   
+        public string OrganizerId { get; set; } //who makes this booking ?   
 
         [Required(ErrorMessage = "Attendee is required.")]
-        public string Attendee { get; set; } //who attends this booking ? 
+        public string AttendeeId { get; set; } //who attends this booking ? 
     }
 }

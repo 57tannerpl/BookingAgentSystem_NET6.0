@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Remove="Interfaces\IBookingManagementService.cs" />
+    <Compile Remove="Models\Role.cs" />
     <Compile Remove="Services\BookingManagementService.cs" />
   </ItemGroup>
 

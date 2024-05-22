@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<SBADbContext>(options =>
                 options.UseInMemoryDatabase("SettlementBookingDatabase"));
 builder.Services.AddScoped<IBookingRepository, BookingRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.Decorate<IBookingRepository, BookingServiceProxy>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

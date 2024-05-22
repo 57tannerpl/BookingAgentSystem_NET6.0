@@ -12,5 +12,6 @@ namespace SettlementBookingAgent_NET6._0.API.Data
         }
 
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
